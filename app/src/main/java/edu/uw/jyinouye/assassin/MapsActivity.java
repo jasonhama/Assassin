@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -33,6 +34,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        //Setup firebase
+        Firebase.setAndroidContext(this);
+
+        Firebase myFirebaseRef = new Firebase("https://info-498d-assassin.firebaseio.com/");
+
 
         // Poll for location every 10 seconds, max 5 seconds
         mLocationRequest = new LocationRequest();
